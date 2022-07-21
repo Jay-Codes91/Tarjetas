@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,CAAA;EACC,MAAM,EAAE,OAAO;CAElB;;AAED,AAAA,WAAW,CAAA;EACR,KAAK,EAAE,OAAO;CAChB;;AAED,AAAA,SAAS,CAAA;EACN,KAAK,EAAE,OAAO;CAChB",
+    "sources": [
+        "tarjeta-credito.component.scss"
+    ],
+    "names": [],
+    "file": "tarjeta-credito.component.css"
+}

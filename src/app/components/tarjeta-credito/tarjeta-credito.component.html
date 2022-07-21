@@ -1,0 +1,104 @@
+<h1 class="text-center">Tarjeta de crédito</h1>
+<br>
+
+<div class=" w-75 mx-auto">
+    <div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="titulo text-center"> {{accion | uppercase}} TARJETAS</h5>
+                <br>
+                <form [formGroup]="form" (ngSubmit)="guardarTarjeta()">
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-person" [class.green-icon]="this.form.get('titular')?.valid"
+                               [class.red-icon]="this.form.get('titular')?.invalid && this.form.get('titular')?.touched"></i>
+                        </span>
+                        <input formControlName="titular" type="text" class="form-control" placeholder="Titular">
+                    </div>
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-credit-card" [class.green-icon]="this.form.get('numtarjeta')?.valid"
+                            [class.red-icon]="this.form.get('numtarjeta')?.invalid && this.form.get('numtarjeta')?.touched"></i>
+                        </span>
+                        <input formControlName="numtarjeta" maxlength="16" type="text" class="form-control" placeholder="Número tarjeta">
+                    </div>
+                    <div class="row">
+                        <div class=" col-7">
+                            <div class="input-group input-group-lg mb-3">
+                                <span class="input-group-text">
+                                    <i class="bi bi-calendar" [class.green-icon]="this.form.get('fechaExpiracion')?.valid"
+                                    [class.red-icon]="this.form.get('fechaExpiracion')?.invalid && this.form.get('fechaExpiracion')?.touched"></i>
+                                </span>
+                                <input formControlName="fechaExpiracion" maxlength="5" type="text" class="form-control" placeholder="MM/YY">
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group input-group-lg mb-3">
+                                <span class="input-group-text">
+                                    <i class="bi bi-key" [class.green-icon]="this.form.get('cvv')?.valid"
+                                    [class.red-icon]="this.form.get('cvv')?.invalid && this.form.get('cvv')?.touched"></i>
+                                </span>
+                                <input formControlName="cvv" maxlength="3" type="password" class="form-control" placeholder="CVV">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button [disabled]="this.form.invalid" class="btn btn-success btn-lg" type="submit">Aceptar</button>  
+                    </div>
+                     
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="titulo text-center">LISTADO DE TARJETAS</h5>
+                <br>
+                <div class="text-center" *ngIf="!load">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                </div>
+
+                <div *ngIf="load">
+                  <table class="table table-light">
+                    <thead>
+                      <tr>
+                        <td>Titular</td>
+                        <td>Numero Tarjeta</td>
+                        <td>Expiración</td>
+                        <td>Modificar</td>
+                        <td>Eliminar</td>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of listTarjetas">
+                        <td>{{item.titular}}</td>
+                        <td>{{item.numtarjeta}}</td>
+                        <td>{{item.fechaExpiracion}}</td>
+                        <td>
+                          <i (click)="editarTarjeta(item)" class="bi bi-pencil-square text-info text-center"
+                            title="Modificar"></i>
+                        </td>
+                        <td>
+                          <i (click)="eliminarTarjeta(item.id)" class="bi bi-trash text-danger text-center"
+                            title="Eliminar"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
