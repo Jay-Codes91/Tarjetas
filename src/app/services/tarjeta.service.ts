@@ -8,7 +8,8 @@ import { Enlaces } from '../components/tarjeta-credito/Models/Enlaces';
 })
 export class TarjetaService {
   
-  private myAppUrl = 'https://localhost:44345/';
+  //private myAppUrl = 'https://localhost:44345/';
+  private myAppUrl = 'http://reservasecen-001-site1.itempurl.com/';
  //myAppUrl: string = '';
   
   private myAPiURL = 'api/Tarjeta';
